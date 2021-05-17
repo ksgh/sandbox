@@ -1,0 +1,17 @@
+{
+    "name": "Development Sandbox",
+    "image": "sandbox-devel:1.0",
+    "extensions": ["ms-python.python", "ms-azuretools.vscode-docker", "hashicorp.terraform", "redhat.vscode-yaml"],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/opt/app/tools,type=bind",
+    "workspaceFolder": "/opt/app",
+    "containerEnv": {
+        "__IS_DEV_CONTAINER": "1",
+    },
+    "remoteEnv": {
+        "PATH": "/opt/app/tools/utils/bin:${containerEnv:PATH}"
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/sandbox,target=/opt/app/sandbox,type=bind",
+    ],
+    "userEnvProbe": "loginInteractiveShell"
+}
