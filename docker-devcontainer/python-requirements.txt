@@ -1,5 +1,14 @@
 boto3
+boto
+blackduck==1.0.3
+beautifulsoup4==4.9.3
+colorama
+python-dateutil==2.8.1
 slack_sdk
-openstacksdk
-python-openstackclient
 ansible
+requests==2.25.1
+requests_ntlm==1.1.0
+simple-crypt==4.1.7
+six==1.16.0
+urllib3==1.26.6
+wget

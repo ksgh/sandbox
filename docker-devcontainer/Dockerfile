@@ -1,5 +1,5 @@
 ARG BASE_IMAGE=alpine
-ARG BASE_TAG=latest
+ARG BASE_TAG=3.14.0
 
 FROM ${BASE_IMAGE}:${BASE_TAG}
 
@@ -22,15 +22,9 @@ RUN apk update && apk upgrade && \
     ln -sf python3 /usr/bin/python && \
     python -m ensurepip && \
     ln -sf pip3 /usr/bin/pip && \
-    ## Need wheel here prior to installing/building the openstack client (cryptography)
     pip install --no-cache --upgrade pip setuptools wheel && \
     pip install -r /requirements.txt && \
-    ## Install Terraform
-    wget https://releases.hashicorp.com/terraform/0.15.3/terraform_0.15.3_linux_amd64.zip && \
-    unzip terraform_* && \
-    mv terraform /usr/bin/ && \
-    rm terraform_* && \
-    \
-    which terraform     && terraform -version && \
     which python        && python --version && \
     which ansible       && ansible --version
+
+ENTRYPOINT [ "/bin/bash" ]
